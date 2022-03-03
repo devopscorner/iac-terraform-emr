@@ -94,9 +94,9 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   - Officials
 
     ```
-    ./get-official.sh
+    ./get-officials.sh
     -- or --
-    make sub-official
+    make sub-officials
     ```
 
   - Community
