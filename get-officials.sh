@@ -12,7 +12,7 @@ VER="2.3"                             # script version
 
 PATH_APP=$(pwd)
 SUBMODULE_TERRAFORM="$PATH_APP/module_official.lst"
-PATH_MODULES="$PATH_APP/terraform/modules/providers/aws/official"
+PATH_MODULES="$PATH_APP/terraform/modules/providers/aws/officials"
 
 COL_RED="\033[22;31m"
 COL_GREEN="\033[22;32m"

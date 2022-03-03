@@ -11,8 +11,9 @@ export PATH_WORKSPACE="src"
 export PATH_SCRIPT="scripts"
 export PATH_COMPOSE="."
 export PATH_DOCKER="."
-export PROJECT_NAME="iac-terraform-emr"
+export PROJECT_NAME="iac-amazon-emr"
 export TF_PATH="terraform/environment/providers/aws"
+export TF_MODULES="terraform/modules/providers/aws"
 
 export CI_REGISTRY     ?= YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com
 export CI_PROJECT_PATH ?= devopscorner
@@ -25,14 +26,14 @@ VERSION       ?= 1.3.0
 BASE_IMAGE     = ubuntu
 BASE_VERSION   = 20.04
 
-.PHONY: sub-official sub-community sub-all
-sub-official:
+.PHONY: sub-officials sub-community sub-all
+sub-officials:
 	@echo "============================================"
 	@echo " Task      : Get Official Submodules "
 	@echo " Date/Time : `date`"
 	@echo "============================================"
-	@mkdir -p modules
-	@./get-official.sh
+	@mkdir -p ${TF_MODULES}/officials
+	@./get-officials.sh
 	@echo '- DONE -'
 
 sub-community:
@@ -40,7 +41,7 @@ sub-community:
 	@echo " Task      : Get Community Submodules "
 	@echo " Date/Time : `date`"
 	@echo "============================================"
-	@mkdir -p modules
+	@mkdir -p ${TF_MODULES}/community
 	@./get-community.sh
 	@echo '- DONE -'
 
