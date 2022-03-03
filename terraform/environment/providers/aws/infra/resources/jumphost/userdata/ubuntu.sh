@@ -88,9 +88,7 @@ python3 -m pip install pip==21.3.1 &&
         httplib2 \
         six \
         requests \
-        boto3 &&
-    # setup root .ssh directory
-    mkdir -p /home/ubuntu/.ssh && chmod 0700 /home/ubuntu/.ssh && chown -R root. /home/ubuntu/.ssh
+        boto3
 
 chmod +x /tmp/*.sh
 
