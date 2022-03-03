@@ -7,6 +7,11 @@ export PACKER_VERSION=1.7.10
 export TERRAFORM_VERSION=1.1.6
 export TERRAGRUNT_VERSION=v0.36.1
 
+export DEBIAN_FRONTEND=noninteractive
+export DOCKER_PATH="/usr/bin/docker"
+export DOCKER_COMPOSE_PATH="/usr/bin/docker-compose"
+export DOCKER_COMPOSE_VERSION="2.2.3"
+
 # ================================================================================================
 #  INSTALL USER-DATA (Ubuntu LINUX)
 # ================================================================================================
@@ -33,6 +38,28 @@ apt-get install -y \
     python3-apt \
     iputils-ping
 
+# ================================================================================================
+#  INSTALL DOCKER (Ubuntu Linux)
+# ================================================================================================
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+apt-get update
+apt-cache policy docker-ce
+
+apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install \
+    docker-ce
+
+# ================================================================================================
+#  INSTALL DOCKER-COMPOSE
+# ================================================================================================
+curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m) -o $DOCKER_COMPOSE_PATH
+chmod +x /usr/bin/docker-compose
+
+# ================================================================================================
+#  INSTALL DevOps TOOLS
+# ================================================================================================
 ## install awscli
 apt-get install -y \
     awscli &&
@@ -63,11 +90,11 @@ python3 -m pip install pip==21.3.1 &&
         requests \
         boto3 &&
     # setup root .ssh directory
-    mkdir -p /root/.ssh && chmod 0700 /root/.ssh && chown -R root. /root/.ssh
+    mkdir -p /home/ubuntu/.ssh && chmod 0700 /home/ubuntu/.ssh && chown -R root. /home/ubuntu/.ssh
 
 chmod +x /tmp/*.sh
 
-# cleanup cache
+# Cleanup Cache
 apt-get clean &&
     apt-get autoremove -y
 
