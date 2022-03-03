@@ -87,7 +87,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 - Clone this repository
 
   ```
-  git clone https://github.com/devopscorner/devopscorner-terraform-emr.git
+  git clone https://github.com/devopscorner/iac-terraform-emr.git
   ```
 
 - Get Terraform Modules
