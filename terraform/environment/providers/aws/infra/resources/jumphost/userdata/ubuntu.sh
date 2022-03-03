@@ -10,7 +10,7 @@ export TERRAGRUNT_VERSION=v0.36.1
 export DEBIAN_FRONTEND=noninteractive
 export DOCKER_PATH="/usr/bin/docker"
 export DOCKER_COMPOSE_PATH="/usr/bin/docker-compose"
-export DOCKER_COMPOSE_VERSION="2.2.3"
+export DOCKER_COMPOSE_VERSION="1.29.2"
 
 # ================================================================================================
 #  INSTALL USER-DATA (Ubuntu LINUX)
@@ -90,6 +90,14 @@ python3 -m pip install pip==21.3.1 &&
         requests \
         boto3
 
+## install tfenv
+git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
+ln -s ~/.tfenv/bin/* /usr/local/bin
+mkdir -p ~/.local/bin/
+. ~/.profile
+ln -s ~/.tfenv/bin/* ~/.local/bin
+
 chmod +x /tmp/*.sh
 
 # Cleanup Cache
@@ -101,7 +109,7 @@ echo 'LANG=en_US.utf-8' >> /etc/environment
 echo 'LC_ALL=en_US.utf-8' >> /etc/environment
 
 ##### CUSTOMIZE ~/.profile #####
-echo '' >>~/.profile
+echo '' >> ~/.profile
 echo '### Docker ###
 export DOCKER_CLIENT_TIMEOUT=300
 export COMPOSE_HTTP_TIMEOUT=300' >> ~/.profile
@@ -109,3 +117,9 @@ export COMPOSE_HTTP_TIMEOUT=300' >> ~/.profile
 ## Adding Custom Sysctl
 echo 'vm.max_map_count=524288' >> /etc/sysctl.conf
 echo 'fs.file-max=131072' >> /etc/sysctl.conf
+
+##### CONFIGURE DOCKER #####
+usermod -aG docker ubuntu
+
+ln -snf $DOCKER_PATH /usr/bin/dock
+ln -snf $DOCKER_COMPOSE_PATH /usr/bin/dcomp
