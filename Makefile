@@ -12,7 +12,11 @@ export PATH_SCRIPT="scripts"
 export PATH_COMPOSE="."
 export PATH_DOCKER="."
 export PROJECT_NAME="iac-amazon-emr"
-export TF_PATH="terraform/environment/providers/aws"
+export TF_PATH="terraform/environment/providers/aws/infra"
+export TF_CORE="${TF_PATH}/core"
+export TF_RESOURCES="${TF_PATH}/resources"
+export TF_STATE="${TF_PATH}/tfstate"
+
 export TF_MODULES="terraform/modules/providers/aws"
 
 export CI_REGISTRY     ?= YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com
@@ -26,6 +30,9 @@ VERSION       ?= 1.3.0
 BASE_IMAGE     = ubuntu
 BASE_VERSION   = 20.04
 
+# =============== #
+#   GET MODULES   #
+# =============== #
 .PHONY: sub-officials sub-community sub-all
 sub-officials:
 	@echo "============================================"
@@ -46,52 +53,66 @@ sub-community:
 	@echo '- DONE -'
 
 sub-all:
-	@make sub-official
+	@make sub-officials
 	@echo ""
 	@make sub-community
 	@echo ""
 	@echo "---"
 	@echo '- ALL DONE -'
 
-.PHONY: build-tf-emr push-tf-emr push-container-tf-emr
+# ============================= #
+#   BUILD CONTAINER TERRAFORM   #
+# ============================= #
+.PHONY: build-tf-emr tag-tf-emr push-tf-emr
 build-tf-emr:
-	@echo "================================================="
-	@echo " Task      : Create Container Image CI/CD EMR "
+	@echo "=================================================="
+	@echo " Task      : Create Container Image Terraform EMR "
 	@echo " Date/Time : `date`"
-	@echo "================================================="
-	@cd ${PATH_DOCKER}/tf-emr && ./docker-build.sh
+	@echo "=================================================="
+	@sh ./ecr-docker-alpine.sh
 	@echo '- DONE -'
 
+# ============================ #
+#   TAGS CONTAINER TERRAFORM   #
+# ============================ #
+tag-tf-emr:
+	@echo "=========================================="
+	@echo " Task      : Set Tags Image Terraform EMR "
+	@echo " Date/Time : `date`"
+	@echo "=========================================="
+	@sh ./ecr-tag-alpine.sh
+	@echo '- DONE -'
+
+# ============================ #
+#   PUSH CONTAINER TERRAFORM   #
+# ============================ #
 push-tf-emr:
 	@echo "================================================="
-	@echo " Task      : Push Container Image CI/CD EMR "
+	@echo " Task      : Push Container Image Terraform EMR  "
 	@echo " Date/Time : `date`"
 	@echo "================================================="
-	@cd ${PATH_DOCKER}/tf-emr && ./docker-push.sh
+	@sh ./ecr-push-alpine.sh
 	@echo '- DONE -'
 
-push-container-tf-emr:
-	@echo "================================================="
-	@echo " Task      : Push Container Image CI/CD EMR "
-	@echo " Date/Time : `date`"
-	@echo "================================================="
-	@cd ${PATH_DOCKER}/tf-emr && ./docker-build.sh
-	@cd ${PATH_DOCKER}/tf-emr && ./docker-push.sh
-	@echo '- DONE -'
-
+# =========================== #
+#   PROVISIONING INFRA CORE   #
+# =========================== #
 .PHONY: tf-core tf-emr
 tf-core:
 	@echo "============================================"
 	@echo " Task      : Provisioning Terraform Core "
 	@echo " Date/Time : `date`"
 	@echo "============================================"
-	@cd ${TF_PATH}/infra/core && terraform apply
+	@cd ${TF_CORE} && terraform apply
 	@echo '- DONE -'
 
+# ============================== #
+#   PROVISIONING RESOURCES EMR   #
+# ============================== #
 tf-emr:
 	@echo "============================================"
 	@echo " Task      : Provisioning Terraform EMR "
 	@echo " Date/Time : `date`"
 	@echo "============================================"
-	@cd ${TF_PATH}/infra/resources/emr && terraform apply
+	@cd ${TF_RESOURCES}/emr && terraform apply
 	@echo '- DONE -'

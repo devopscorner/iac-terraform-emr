@@ -48,39 +48,53 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
     ```
     aws ecr get-login-password --region [AWS_REGION] | docker login --username AWS --password-stdin [ECR_PATH]
+
     ---
+
     aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com
     ```
 
   - ECR Build
 
-    ```
-    docker tag devopscorner-cicd:ubuntu YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devops/cicd:ubuntu
+    - Example:
 
-    -- or --
+      ```
+      # Ubuntu
 
-    docker tag devopscorner-cicd:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devops/cicd:alpine
-    ```
+      docker tag devopscorner-cicd:ubuntu YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu
+
+      # Alpine
+
+      docker tag devopscorner-cicd:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:alpine
+      ```
+
+    - With Script:
+
+      ```
+      make ecr-tag-ubuntu
+      make ecr-tag-alpine
+      ```
 
   - ECR Push
 
-    ```
-    docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devops/cicd:ubuntu
+    - Example:
 
-    ## Ubuntu ##
-    cd compose
-    ./ecr-tag-ubuntu.sh
-    ./ecr-push-ubuntu.sh
+      ```
+      # Ubuntu
 
-    -- or --
+      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu
 
-    docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devops/cicd:alpine
+      # Alpine
 
-    ## Alpine ##
-    cd compose
-    ./ecr-tag-alpine.sh
-    ./ecr-push-alpine.sh
-    ```
+      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:alpine
+      ```
+
+    - With Script:
+
+      ```
+      make ecr-push-ubuntu
+      make ecr-push-alpine
+      ```
 
 ## Terraform EMR
 
@@ -182,6 +196,61 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     terraform plan
     terraform apply
     ```
+
+## Terraform EMR Inside Container
+
+- ECR Build
+
+  - Example:
+
+      ```
+      # Alpine
+
+      docker build . -t YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine
+      ```
+
+  - With Script:
+
+      ```
+      make ecr-build-alpine
+      ```
+
+
+- ECR Tag
+
+  - Example:
+
+      ```
+      # Alpine
+
+      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:latest
+      ```
+
+  - With Script:
+
+      ```
+      make ecr-tag-alpine
+      ```
+
+- ECR Push
+
+  - Example:
+
+      ```
+      # Alpine
+
+      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine
+
+      # Latest (Alpine)
+
+      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:latest
+      ```
+
+  - With Script:
+
+      ```
+      make ecr-push-alpine
+      ```
 
 ## Using Cloud9 IDE
 
