@@ -80,7 +80,7 @@ sudo apt-get install -y \
     rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
 python3 -m pip install pip==21.3.1 &&
-    pip3 install --upgrade pip cffi &&
+    pip3 install --upgrade pip cffi awscli &&
     # install ansible
     pip3 install --no-cache-dir ansible-core==${ANSIBLE_VERSION} \
         ansible-tower-cli==3.3.4 \
@@ -90,6 +90,8 @@ python3 -m pip install pip==21.3.1 &&
         six \
         requests \
         boto3
+
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
 ## install tfenv
 git clone https://github.com/tfutils/tfenv.git ~/.tfenv

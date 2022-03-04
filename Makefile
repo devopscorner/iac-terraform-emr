@@ -69,7 +69,7 @@ build-tf-emr:
 	@echo " Task      : Create Container Image Terraform EMR "
 	@echo " Date/Time : `date`"
 	@echo "=================================================="
-	@sh ./ecr-docker-alpine.sh
+	@sh ./ecr-build-alpine.sh
 	@echo '- DONE -'
 
 # ============================ #

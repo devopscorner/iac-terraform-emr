@@ -15,21 +15,18 @@ networks:
 # VOLUME SETUP
 #================================================================================================
 volumes:
-  vol_container: &volume_default
+  vol_portainer:
     driver: ${VOLUMES_DRIVER:-local}
-    driver_opts: &driver_default
+    driver_opts:
       o: bind
       type: none
-  vol_portainer:
-    <<: *volume_default
-    driver_opts:
-      <<: *driver_default
       device: ${DATA_PORTAINER:-/opt/data/docker/portainer2.9}
   vol_terraform_emr:
-    <<: *volume_default
+    driver: ${VOLUMES_DRIVER:-local}
     driver_opts:
-      <<: *driver_default
-      device: ${DATA_AIRFLOW_PLUGINS:-/opt/data/docker/terraform-emr}
+      o: bind
+      type: none
+      device: ${DATA_TERRAFORM_EMR:-/opt/data/docker/terraform-emr}
 
 services:
   #================================================================================================
@@ -42,7 +39,8 @@ services:
     ports:
       - "${PORT_PORTAINER:-5212}:9000"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+    # - /etc/localtime:/etc/localtime:ro           ## Do not use it in mac
+    # - /var/run/docker.sock:/var/run/docker.sock  ## Do not use it in k8s
       - vol_portainer:/data
     environment:
       - PORTAINER_TEMPLATE=generic
@@ -63,15 +61,15 @@ services:
     restart: unless-stopped
     ports:
       - "${PORT_TERRAFORM_EMR:-5282}:2222"
-    # volumes:
-    #   #- /etc/localtime:/etc/localtime:ro           ## Do not use it in mac
-    #   #- /var/run/docker.sock:/var/run/docker.sock  ## Do not use it in k8s
-    #   - vol_terraform_emr/ssh:/root/.ssh
-    #   - vol_terraform_emr/deploy:/root/deploy
-    #   - vol_terraform_emr/repo:/root/GitHub
-    #   - vol_terraform_emr/go:/root/go
-    #   - vol_terraform_emr/.aws/credentials:/root/.aws/credentials
-    #   - vol_terraform_emr/.aws/config:/root/.aws/config
+  # volumes:
+  #   - /etc/localtime:/etc/localtime:ro           ## Do not use it in mac
+  #   - /var/run/docker.sock:/var/run/docker.sock  ## Do not use it in k8s
+  #   - vol_terraform_emr/ssh:/root/.ssh
+  #   - vol_terraform_emr/deploy:/root/deploy
+  #   - vol_terraform_emr/repo:/root/GitHub
+  #   - vol_terraform_emr/go:/root/go
+  #   - vol_terraform_emr/.aws/credentials:/root/.aws/credentials
+  #   - vol_terraform_emr/.aws/config:/root/.aws/config
     environment:
       - TZ="Asia/Jakarta"
       - ALPINE_VERSION=${ALPINE_VERSION:-3.15}

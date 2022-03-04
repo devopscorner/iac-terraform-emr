@@ -40,13 +40,8 @@ LABEL maintainer="$AUTHOR" \
       fr.hbis.docker.base.version="$BUILD_VERSION"
 
 USER root
-RUN  mkdir -p /root/terraform; sync
-COPY terraform /root/terraform
-COPY get-community.sh \
-      get-official.sh \
-      module_community.lst \
-      module_official.lst \
-      Makefile /root
+COPY rootfs /
+COPY . /root
 
 WORKDIR /root
 
