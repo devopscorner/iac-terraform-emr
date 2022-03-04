@@ -131,7 +131,7 @@ variable "ec2_type" {
   default = {
     lab     = "t3.small"
     staging = "t3.medium"
-    prod    = "t3.large"
+    prod    = "t3.medium"
   }
 }
 

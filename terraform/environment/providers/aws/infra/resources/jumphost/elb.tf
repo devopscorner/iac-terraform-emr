@@ -33,6 +33,13 @@ resource "aws_elb" "jumphost" {
     lb_protocol       = "http"
   }
 
+  # listener {
+  #   instance_port     = 443
+  #   instance_protocol = "https"
+  #   lb_port           = 443
+  #   lb_protocol       = "https"
+  # }
+
   listener {
     instance_port     = 8080
     instance_protocol = "tcp"

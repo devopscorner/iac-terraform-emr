@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# ================================================================================================
+#  INSTALL USER-DATA (Ubuntu LINUX)
+# ================================================================================================
 export DEBIAN_FRONTEND=noninteractive
 
 export ANSIBLE_VERSION=2.12.2
@@ -7,17 +10,12 @@ export PACKER_VERSION=1.7.10
 export TERRAFORM_VERSION=1.1.6
 export TERRAGRUNT_VERSION=v0.36.1
 
-export DEBIAN_FRONTEND=noninteractive
 export DOCKER_PATH="/usr/bin/docker"
 export DOCKER_COMPOSE_PATH="/usr/bin/docker-compose"
 export DOCKER_COMPOSE_VERSION="1.29.2"
 
-# ================================================================================================
-#  INSTALL USER-DATA (Ubuntu LINUX)
-# ================================================================================================
-apt -o APT::Sandbox::User=root update
-apt-get update
-apt-get install -y \
+sudo apt-get update
+sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install \
     git \
     bash \
     curl \
@@ -29,6 +27,8 @@ apt-get install -y \
     openssh-client \
     net-tools \
     vim-tiny \
+    tmux \
+    mc \
     nano \
     zip \
     unzip \
@@ -36,6 +36,7 @@ apt-get install -y \
     python3-distutils \
     python3-pip \
     python3-apt \
+    python2.7 \
     iputils-ping
 
 # ================================================================================================
@@ -45,43 +46,43 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-apt-get update
-apt-cache policy docker-ce
+sudo apt-get update
+sudo apt-cache policy docker-ce
 
-apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install \
+sudo apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install \
     docker-ce
 
 # ================================================================================================
 #  INSTALL DOCKER-COMPOSE
 # ================================================================================================
-curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m) -o $DOCKER_COMPOSE_PATH
-chmod +x /usr/bin/docker-compose
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m) -o $DOCKER_COMPOSE_PATH
+sudo chmod +x /usr/bin/docker-compose
 
 # ================================================================================================
 #  INSTALL DevOps TOOLS
 # ================================================================================================
 ## install awscli
-apt-get install -y \
+sudo apt-get install -y \
     awscli &&
     # install terraform
     wget -O terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
         https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip &&
-    unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin &&
+    sudo unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin &&
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip &&
     # install terragrunt
     wget -O /usr/local/bin/terragrunt \
         https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 &&
-    chmod +x /usr/local/bin/terragrunt &&
+    sudo chmod +x /usr/local/bin/terragrunt &&
     # install packer
     wget -O packer_${PACKER_VERSION}_linux_amd64.zip \
         https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip &&
-    unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin &&
+    sudo unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin &&
     rm -f packer_${PACKER_VERSION}_linux_amd64.zip
 
 python3 -m pip install pip==21.3.1 &&
     pip3 install --upgrade pip cffi &&
     # install ansible
-    pip3 install ansible-core==${ANSIBLE_VERSION} \
+    pip3 install --no-cache-dir ansible-core==${ANSIBLE_VERSION} \
         ansible-tower-cli==3.3.4 \
         PyYaml \
         Jinja2 \
@@ -92,34 +93,32 @@ python3 -m pip install pip==21.3.1 &&
 
 ## install tfenv
 git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
+echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >>~/.bash_profile
 ln -s ~/.tfenv/bin/* /usr/local/bin
 mkdir -p ~/.local/bin/
 . ~/.profile
 ln -s ~/.tfenv/bin/* ~/.local/bin
 
-chmod +x /tmp/*.sh
-
 # Cleanup Cache
-apt-get clean &&
-    apt-get autoremove -y
+sudo apt-get clean &&
+    sudo apt-get autoremove -y
 
 ## Set Locale
-echo 'LANG=en_US.utf-8' >> /etc/environment
-echo 'LC_ALL=en_US.utf-8' >> /etc/environment
+sudo echo 'LANG=en_US.utf-8' >>/etc/environment
+sudo echo 'LC_ALL=en_US.utf-8' >>/etc/environment
 
 ##### CUSTOMIZE ~/.profile #####
-echo '' >> ~/.profile
+echo '' >>~/.profile
 echo '### Docker ###
 export DOCKER_CLIENT_TIMEOUT=300
-export COMPOSE_HTTP_TIMEOUT=300' >> ~/.profile
+export COMPOSE_HTTP_TIMEOUT=300' >>~/.profile
 
 ## Adding Custom Sysctl
-echo 'vm.max_map_count=524288' >> /etc/sysctl.conf
-echo 'fs.file-max=131072' >> /etc/sysctl.conf
+sudo echo 'vm.max_map_count=524288' >>/etc/sysctl.conf
+sudo echo 'fs.file-max=131072' >>/etc/sysctl.conf
 
 ##### CONFIGURE DOCKER #####
-usermod -aG docker ubuntu
+sudo usermod -a -G docker ubuntu
 
-ln -snf $DOCKER_PATH /usr/bin/dock
-ln -snf $DOCKER_COMPOSE_PATH /usr/bin/dcomp
+sudo ln -snf $DOCKER_PATH /usr/bin/dock
+sudo ln -snf $DOCKER_COMPOSE_PATH /usr/bin/dcomp

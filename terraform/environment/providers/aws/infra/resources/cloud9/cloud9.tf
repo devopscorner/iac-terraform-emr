@@ -248,8 +248,8 @@ resource "aws_spot_fleet_request" "cloud9_spot_request" {
     iam_instance_profile   = aws_iam_instance_profile.cloud9_ec2_profile.name
     subnet_id              = local.subnet_id
     vpc_security_group_ids = [aws_security_group.cloud9_machine_firewall.id]
-
     user_data = file("./userdata/user-data.sh")
+  }
 
   tags = merge(local.tags, local.resources_tags)
 }

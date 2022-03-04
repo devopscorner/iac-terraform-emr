@@ -18,9 +18,9 @@ output "instance" {
   value = {
     bucket_name    = local.bucket_name
     private_ipv4   = "${aws_eip.jumphost.private_ip}"
-    public_dns     = "${aws_route53_record.jumphost.name}"
+    public_dns     = "${aws_eip.jumphost.public_dns}"
     public_ipv4    = "${aws_eip.jumphost.public_ip}"
-    ssh_access_dns = "${var.ami}" == "ami-0dc5785603ad4ff54" ? "ssh ec2-user@${aws_route53_record.jumphost.name}" : "ssh ubuntu@${aws_route53_record.jumphost.name}"
+    ssh_access_dns = "${var.ami}" == "ami-0dc5785603ad4ff54" ? "ssh ec2-user@${aws_eip.jumphost.public_dns}" : "ssh ubuntu@${aws_eip.jumphost.public_dns}"
     ssh_access_ip  = "${var.ami}" == "ami-0dc5785603ad4ff54" ? "ssh ec2-user@${aws_eip.jumphost.public_ip}" : "ssh ubuntu@${aws_eip.jumphost.public_ip}"
     subnet_id      = local.subnet_id
     vpc_id         = data.aws_vpc.selected.id

@@ -110,3 +110,15 @@ resource "aws_route53_record" "airflow" {
   ttl     = 300
   records = ["${aws_elb.airflow.dns_name}"]
 }
+
+# resource "aws_route53_record" "airflow" {
+#   zone_id = var.dns_zone[local.env]
+#   name    = local.domain_name
+#   type    = "A"
+
+#   alias {
+#     name                   = "${aws_elb.airflow.dns_name}"
+#     zone_id                = "${aws_elb.airflow.zone_id}"
+#     evaluate_target_health = true
+#   }
+# }
