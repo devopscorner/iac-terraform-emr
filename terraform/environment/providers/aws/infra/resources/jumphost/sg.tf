@@ -45,10 +45,10 @@ resource "aws_security_group" "jumphost" {
   }
 
   ingress {
-    description = "SSH Port"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    description      = "SSH Port"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
     security_groups  = [data.terraform_remote_state.core_state.outputs.security_group_id]
