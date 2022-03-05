@@ -72,7 +72,7 @@ resource "aws_instance" "airflow" {
 
   security_groups = ["${aws_security_group.airflow.id}"]
 
-  user_data = file("./userdata/user-data.sh")
+  user_data = file("./userdata/amazon-linux.sh")
 
   lifecycle {
     prevent_destroy = true
