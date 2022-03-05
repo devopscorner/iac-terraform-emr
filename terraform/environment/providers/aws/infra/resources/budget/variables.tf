@@ -1,9 +1,9 @@
 # ==========================================================================
-#  Resources: Budget / variables.tf
+#  Resources: Budget / variables.tf (Global Environment)
 # --------------------------------------------------------------------------
 #  Description
 # --------------------------------------------------------------------------
-#    - Input Variable for AWS Provider
+#    - Input Variable for Environment Variables
 # ==========================================================================
 
 # ------------------------------------
@@ -15,11 +15,12 @@ variable "aws_region" {
   default     = "ap-southeast-1"
 }
 
+
 # ------------------------------------
 #  Workspace
 # ------------------------------------
 variable "env" {
-  type = map(string)
+  type        = map(string)
   description = "Workspace Environment Selection"
   default = {
     lab     = "lab"
