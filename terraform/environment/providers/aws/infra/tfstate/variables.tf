@@ -1,9 +1,9 @@
 # ==========================================================================
-#  Core: TFSTATE / variables.tf (Environment)
+#  Core: TFState / variables.tf (Global Environment)
 # --------------------------------------------------------------------------
 #  Description
 # --------------------------------------------------------------------------
-#    - Input Variable for AWS Provider
+#    - Input Variable for Environment Variables
 # ==========================================================================
 
 # ------------------------------------
@@ -19,7 +19,7 @@ variable "aws_region" {
 #  Workspace
 # ------------------------------------
 variable "env" {
-  type = map(string)
+  type        = map(string)
   description = "Workspace Environment Selection"
   default = {
     lab     = "lab"
@@ -54,7 +54,7 @@ variable "department" {
 #  KMS Key
 # ------------------------------------
 variable "kms_key" {
-  type = map(string)
+  type        = map(string)
   description = "KMS Key References"
   default = {
     lab     = "arn:aws:kms:ap-southeast-1:YOUR_AWS_ACCOUNT:key/CMK_KEY_HASH"
@@ -67,7 +67,7 @@ variable "kms_key" {
 #  KMS Environment
 # ------------------------------------
 variable "kms_env" {
-  type = map(string)
+  type        = map(string)
   description = "KMS Key Environment"
   default = {
     lab     = "RnD"
