@@ -12,7 +12,7 @@
 # --------------------------------------------------------------------------
 locals {
   s3_tags = {
-    "Name"          = "${var.cloud9_bucket_name}-${var.env[local.env]}",
+    "Name"          = "${var.bucket_name}-${var.env[local.env]}",
     "ResourceGroup" = "${var.environment[local.env]}-S3-CLOUD9"
   }
 }
@@ -21,7 +21,7 @@ locals {
 # S3 (Object) #
 ###############
 locals {
-  bucket_name = "${var.cloud9_bucket_name}-${var.env[local.env]}"
+  bucket_name = "${var.bucket_name}-${var.env[local.env]}"
   region      = "${var.aws_region}"
 }
 
@@ -50,41 +50,6 @@ data "aws_kms_key" "cmk_key" {
 
 resource "random_pet" "this" {
   length = 2
-}
-
-resource "aws_iam_role" "this" {
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
-}
-
-data "aws_iam_policy_document" "bucket_policy" {
-  statement {
-    principals {
-      type        = "AWS"
-      identifiers = [aws_iam_role.this.arn]
-    }
-
-    actions = [
-      "s3:ListBucket",
-    ]
-
-    resources = [
-      "arn:aws:s3:::${local.bucket_name}",
-    ]
-  }
 }
 
 module "s3_bucket" {
