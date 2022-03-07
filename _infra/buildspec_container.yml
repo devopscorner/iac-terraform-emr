@@ -5,13 +5,13 @@ env:
   #  Ref: Pipeline Environment Variables  #
   # ===================================== #
   variables:
-    env_aws_account: $AWS_ACCOUNT
-    env_aws_access_key: $AWS_ACCESS_KEY
-    env_aws_secret_key: $AWS_SECRET_KEY
-    env_repo_username: $REPO_USERNAME
-    env_repo_pubkey: $REPO_PUBKEY # base64 encoded
-    env_dockerhub_username: $DOCKERHUB_USERNAME
-    env_dockerhub_password: $DOCKERHUB_PASSWORD
+    env_aws_account: "${AWS_ACCOUNT}"
+    env_aws_access_key: "${AWS_ACCESS_KEY}"
+    env_aws_secret_key: "${AWS_SECRET_KEY}"
+    env_repo_username: "${REPO_USERNAME}"
+    env_repo_pubkey: "${REPO_PUBKEY}" # base64 encoded
+    env_dockerhub_username: "${DOCKERHUB_USERNAME}"
+    env_dockerhub_password: "${DOCKERHUB_PASSWORD}"
     env_repo_url: "https://github.com/devopscorner/iac-terraform-emr.git"
     env_repo_folder: "iac-terraform-emr"
     env_container_image: "devopscorner/iac-terraform-emr:alpine"
