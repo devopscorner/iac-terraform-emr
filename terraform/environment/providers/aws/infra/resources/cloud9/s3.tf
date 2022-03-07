@@ -12,7 +12,7 @@
 # --------------------------------------------------------------------------
 locals {
   s3_tags = {
-    "Name"          = "${var.bucket_name}-${var.env[local.env]}",
+    "Name"          = "${var.env[local.env]}" == "prod" ?  "${var.bucket_name}" : "${var.bucket_name}-${var.env[local.env]}",
     "ResourceGroup" = "${var.environment[local.env]}-S3-CLOUD9"
   }
 }
@@ -21,7 +21,7 @@ locals {
 # S3 (Object) #
 ###############
 locals {
-  bucket_name = "${var.bucket_name}-${var.env[local.env]}"
+  bucket_name = "${var.env[local.env]}" == "prod" ?  "${var.bucket_name}" : "${var.bucket_name}-${var.env[local.env]}"
   region      = "${var.aws_region}"
 }
 

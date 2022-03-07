@@ -17,7 +17,7 @@ resource "aws_security_group" "cloud9_machine_firewall" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = [
-      "${var.cloud9_my_ip}",
+      "${var.access_my_ip}",
       data.terraform_remote_state.core_state.outputs.ec2_private_1a_cidr,
       data.terraform_remote_state.core_state.outputs.ec2_private_1b_cidr,
       data.terraform_remote_state.core_state.outputs.eks_private_1a_cidr,

@@ -1,5 +1,5 @@
 # ==========================================================================
-#  Resources: RDS emrdb / remove_states.tf (Remote Terraform References)
+#  Resources: RDS emrdb / remote_states.tf (Remote Terraform References)
 # --------------------------------------------------------------------------
 #  Description
 # --------------------------------------------------------------------------

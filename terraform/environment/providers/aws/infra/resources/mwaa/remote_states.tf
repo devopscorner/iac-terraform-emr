@@ -1,5 +1,5 @@
 # ==========================================================================
-#  Resources: MWAA / remove_states.tf (Remote Terraform References)
+#  Resources: MWAA / remote_states.tf (Remote Terraform References)
 # --------------------------------------------------------------------------
 #  Description
 # --------------------------------------------------------------------------

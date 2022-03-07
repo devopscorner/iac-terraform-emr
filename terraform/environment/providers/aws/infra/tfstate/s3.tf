@@ -12,7 +12,7 @@
 # --------------------------------------------------------------------------
 locals {
   s3_tags = {
-    "Name"          = var.tfstate_dynamodb_table,
+    "Name"          = "${var.tfstate_bucket}",
     "ResourceGroup" = "${var.environment[local.env]}-S3-TFSTATE"
   }
 }
@@ -21,8 +21,8 @@ locals {
 # S3 (Object) #
 ###############
 locals {
-  bucket_name = var.tfstate_bucket
-  region      = var.aws_region
+  bucket_name = "${var.tfstate_bucket}"
+  region      = "${var.aws_region}"
 }
 
 data "aws_canonical_user_id" "current" {}

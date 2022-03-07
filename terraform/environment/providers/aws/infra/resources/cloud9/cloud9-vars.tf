@@ -73,8 +73,8 @@ variable "cloud9_user_data_url" {
 }
 
 # Used in Security Group for accessing EC2
-# You can set the value as environment variable `export TF_VAR_cloud9_my_ip=YOUR_IP/32`
-variable "cloud9_my_ip" {
+# You can set the value as environment variable `export TF_VAR_access_my_ip=YOUR_IP/32`
+variable "access_my_ip" {
   type        = string
   description = "Your IP Address"
   default     = "118.136.0.0/16"

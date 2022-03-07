@@ -1,5 +1,5 @@
 # ==========================================================================
-#  Resources: Cloud9 / remove_states.tf (Remote Terraform References)
+#  Resources: Cloud9 / remote_states.tf (Remote Terraform References)
 # --------------------------------------------------------------------------
 #  Description
 # --------------------------------------------------------------------------
