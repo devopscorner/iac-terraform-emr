@@ -61,11 +61,11 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
       ```
       # Ubuntu
 
-      docker tag devopscorner-cicd:ubuntu YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu
+      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:latest
 
       # Alpine
 
-      docker tag devopscorner-cicd:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:alpine
+      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:latest
       ```
 
     - With Script:
@@ -349,7 +349,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
 Make sure that you didn't push sensitive information in this repository
 
-- [ ] AWS Credentials (AWS_ACCESS_KEY, AWS_SECRET)
+- [ ] AWS Credentials (AWS_ACCESS_KEY, AWS_SECRET_KEY)
 - [ ] AWS Account ID
 - [ ] AWS Resources ARN
 - [ ] Username & Password
