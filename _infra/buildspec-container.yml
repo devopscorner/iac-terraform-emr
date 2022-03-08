@@ -5,7 +5,7 @@ env:
   #  Ref: SECRET CONFIG  #
   # ==================== #
   parameter-store:
-    BUILDNUMBER: /devopscorner/cicd/lab/repo/devopscorner-container/buildnumber
+    BUILDNUMBER: /devopscorner/cicd/lab/repo/iac-terraform-emr/buildnumber
     STORE_AWS_ACCOUNT: /devopscorner/cicd/lab/credentials/aws_account
     STORE_AWS_ACCESS_KEY: /devopscorner/cicd/lab/credentials/aws_access_key
     STORE_AWS_SECRET_KEY: /devopscorner/cicd/lab/credentials/aws_secret_key
@@ -13,8 +13,8 @@ env:
     STORE_REPO_PASSWORD: /devopscorner/cicd/lab/repo_credentials/codecommit/password_encoded
     STORE_DOCKERHUB_USERNAME: /devopscorner/cicd/lab/repo_credentials/dockerhub/username
     STORE_DOCKERHUB_PASSWORD: /devopscorner/cicd/lab/repo_credentials/dockerhub/password_encoded
-    STORE_REPO_URL: /devopscorner/cicd/lab/repo/devopscorner-container/repo_url
-    STORE_REPO_FOLDER: /devopscorner/cicd/lab/repo/devopscorner-container/repo_folder
+    STORE_REPO_URL: /devopscorner/cicd/lab/repo/iac-terraform-emr/repo_url
+    STORE_REPO_FOLDER: /devopscorner/cicd/lab/repo/iac-terraform-emr/repo_folder
   # ===================================== #
   #  Ref: Pipeline Environment Variables  #
   # ===================================== #
@@ -23,7 +23,7 @@ env:
     env_aws_access_key: $STORE_AWS_ACCESS_KEY
     env_aws_secret_key: $STORE_AWS_SECRET_KEY
     env_repo_username: $STORE_REPO_USENAME
-    env_repo_pubkey: $STORE_REPO_PASSWORD}" # base64 encod
+    env_repo_pubkey: $STORE_REPO_PASSWORD" # base64 encod
     env_dockerhub_username: $STORE_DOCKERHUB_USERNAME
     env_dockerhub_password: $STORE_DOCKERHUB_PASSWORD
     env_repo_url: $STORE_REPO_URL
