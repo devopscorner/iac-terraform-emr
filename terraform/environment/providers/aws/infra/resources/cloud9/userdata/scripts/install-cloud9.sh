@@ -12,10 +12,10 @@ command -v python3 || {
 echo "Installing development tools..."
 sudo yum -q groupinstall -y 'Development Tools'
 
-echo "Installing AWS Cloud9 installer..." 
+echo "Installing AWS Cloud9 installer..."
 curl -L https://raw.githubusercontent.com/c9/install/master/install.sh | bash
 
-echo ""
+echo ''
 echo "------------------------------------------------------------------"
 echo "Installation is done, you may remove development tools by running:"
 echo "-> yum groupremove -y 'Development Tools'"

@@ -84,7 +84,7 @@ EOF
       hadoop_jar_step = [
         {
           jar        = "s3://ap-southeast-1.elasticmapreduce/libs/script-runner/script-runner.jar"
-          args       = ["s3://${var.bucket_name}/hive/script/script.sh"]
+          args       = ["s3://devopscorner-emr/hive/script/script.sh"]
           main_class = ""
           properties = {}
         }
@@ -101,7 +101,7 @@ EOF
   tags = merge(local.tags, local.resources_tags)
 
   bootstrap_action {
-    path = "s3://${var.bucket_name}/emr/bootstrap/install-libs.sh"
+    path = "s3://devopscorner-emr/emr/bootstrap/install-libs.sh"
     name = "InstallPyLibs"
   }
 

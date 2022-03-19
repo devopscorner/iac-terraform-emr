@@ -34,17 +34,3 @@ resource "aws_vpc" "infra_vpc" {
   tags_all = merge(local.tags, local.vps_tags)
 }
 
-# --------------------------------------------------------------------------
-#  VPC Route Table
-# --------------------------------------------------------------------------
-## EC2 (Both are not main route in existing)
-# resource "aws_main_route_table_association" "ec2_private_subnet_association" {
-#   vpc_id         = aws_vpc.infra_vpc.id
-#   route_table_id = aws_route_table.nat_ec2_rt_private_a.id
-# }
-
-## EKS
-# resource "aws_main_route_table_association" "eks_private_subnet_association" {
-#   vpc_id         = aws_vpc.infra_vpc.id
-#   route_table_id = aws_route_table.nat_eks_rt_private_a.id
-# }

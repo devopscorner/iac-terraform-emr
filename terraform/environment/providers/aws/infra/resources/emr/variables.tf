@@ -123,7 +123,7 @@ variable "ssh_public_key" {
   type        = string
   description = "SSH Public Key"
   ## file:///Users/[username]/.ssh/id_rsa.pub
-  default     = ""
+  default     = "123456"
 }
 
 # ------------------------------------

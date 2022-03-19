@@ -22,4 +22,6 @@ sudo python3 -m pip install \
     scikit-learn==0.24.2 \
     pyarrow==4.0.1
 
+# sudo aws s3 cp --recursive s3://${local.bucket_name}/emr/spark/jar/ /usr/share/aws/aws-java-sdk/
+
 sudo aws s3 cp --recursive s3://devopscorner-emr/emr/spark/jar/ /usr/share/aws/aws-java-sdk/

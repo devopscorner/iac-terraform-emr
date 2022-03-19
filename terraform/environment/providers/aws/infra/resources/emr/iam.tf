@@ -322,7 +322,6 @@ EOF
 # IAM Role for EC2 Instance Profile
 resource "aws_iam_role" "iam_emr_profile_role" {
   name = "iam_emr_profile_role-${var.env[local.env]}"
-
   assume_role_policy = <<EOF
 {
   "Version": "2008-10-17",
