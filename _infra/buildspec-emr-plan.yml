@@ -20,6 +20,8 @@ env:
   # ===================================== #
   variables:
     env_container_image: "devopscorner/iac-terraform-emr:alpine"
+    EMR_RESOURCES: "terraform/environment/providers/aws/infra/resources/emr"
+    WORKSPACE_ENV: "prod"
     AWS_DEFAULT_REGION: "ap-southeast-1"
     TF_VERSION: "1.1.7"
 
@@ -36,26 +38,24 @@ phases:
       - unzip terraform_${TF_VERSION}_linux_amd64.zip
   pre_build:
     commands:
-      - git clone ${STORE_REPO_URL} ${STORE_REPO_FOLDER}
-      - cd ${STORE_REPO_FOLDER} && find ./ -type f -exec sed -i "s/YOUR_AWS_ACCOUNT/${STORE_AWS_ACCOUNT}/g" {} \;
+      # ========================= #
+      #  Using Public Repository  #
+      #========================== #
+      # - git clone ${STORE_REPO_URL} ${STORE_REPO_FOLDER}
+      # - cd ${STORE_REPO_FOLDER} && find ./ -type f -exec sed -i "s/YOUR_AWS_ACCOUNT/${STORE_AWS_ACCOUNT}/g" {} \;
+      # ====================== #
+      #  Using AWS CodeCommit  #
+      #======================= #
+      # https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html
+      - cd ${CODEBUILD_SRC_DIR} && find ./ -type f -exec sed -i "s/YOUR_AWS_ACCOUNT/${STORE_AWS_ACCOUNT}/g" {} \;
       - echo '- DONE -'
   build:
     commands:
-      # ============= #
-      #  Build Image  #
-      #============== #
-      - make build-tf-emr
-      # ============ #
-      #  Tags Image  #
-      #============= #
-      - make tag-tf-emr
-      # ============ #
-      #  Push Image  #
-      #============= #
-      # Login ECR (Inside Script)
-      # Push to ECR
-      - make ecr-push-alpine
-      - echo '-- ALL DONE --'
+      - make codebuild-modules
+      - cd ${CODEBUILD_SRC_DIR}/${EMR_RESOURCES}
+      - terraform init
+      - terraform workspace select ${WORKSPACE_ENV} || terraform workspace new ${WORKSPACE_ENV}
+      - terraform plan
 
 artifacts:
   files:
