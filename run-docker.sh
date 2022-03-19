@@ -138,12 +138,12 @@ prepare_volume() {
   #   echo "$COL_GREEN[ $DATE ]       sudo mkdir -p $VOL $COL_END"
   #   print_line2
   #   sudo mkdir -p $VOL
-  #   echo "- DONE -"
+  #   echo '- DONE -'
   # done
 
   sudo chmod -R 777 $VOL_PATH
   echo "-- VOLUME DONE --"
-  echo ""
+  echo ''
 }
 
 docker_build() {
@@ -159,12 +159,12 @@ docker_build() {
       echo "$COL_GREEN[ $DATE ]       docker-compose -f $COMPOSE_APP build $CONTAINER $COL_END"
       print_line2
       docker-compose -f $COMPOSE_APP build $CONTAINER
-      echo "- DONE -"
-      echo ""
+      echo '- DONE -'
+      echo ''
     done
   fi
   echo "-- BUILD DONE --"
-  echo ""
+  echo ''
 }
 
 docker_up() {
@@ -179,7 +179,7 @@ docker_up() {
   print_line2
   docker-compose -f $COMPOSE_APP up $DAEMON $RECREATE$BUILD_ENV
   echo "-- UP DONE --"
-  echo ""
+  echo ''
 }
 
 main() {

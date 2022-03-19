@@ -71,8 +71,8 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     - With Script:
 
       ```
-      make ecr-tag-ubuntu
-      make ecr-tag-alpine
+      make ecr-tag-ubuntu ARGS=YOUR_AWS_ACCOUNT
+      make ecr-tag-alpine ARGS=YOUR_AWS_ACCOUNT
       ```
 
   - ECR Push
@@ -92,8 +92,8 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     - With Script:
 
       ```
-      make ecr-push-ubuntu
-      make ecr-push-alpine
+      make ecr-push-ubuntu ARGS=YOUR_AWS_ACCOUNT
+      make ecr-push-alpine ARGS=YOUR_AWS_ACCOUNT
       ```
 
 ## Terraform EMR
@@ -212,7 +212,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   - With Script:
 
       ```
-      make ecr-build-alpine
+      make ecr-build-alpine ARGS=YOUR_AWS_ACCOUNT
       ```
 
 
@@ -229,7 +229,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   - With Script:
 
       ```
-      make ecr-tag-alpine
+      make ecr-tag-alpine ARGS=YOUR_AWS_ACCOUNT
       ```
 
 - ECR Push
@@ -249,7 +249,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   - With Script:
 
       ```
-      make ecr-push-alpine
+      make ecr-push-alpine ARGS=YOUR_AWS_ACCOUNT
       ```
 
 ## Using Cloud9 IDE

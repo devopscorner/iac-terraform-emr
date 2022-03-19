@@ -11,4 +11,3 @@ https://github.com/cloudposse/terraform-aws-glue-connection.git
 -b 0.13.0 https://github.com/cloudposse/terraform-aws-route53-alias.git
 -b 0.47.1 https://github.com/cloudposse/terraform-aws-s3-bucket.git
 -b 0.26.0 https://github.com/cloudposse/terraform-aws-s3-log-storage.git
-[EOF]
