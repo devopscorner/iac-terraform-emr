@@ -119,8 +119,7 @@ sudo ln -snf $DOCKER_PATH /usr/bin/dock
 sudo ln -snf $DOCKER_COMPOSE_PATH /usr/bin/dcomp
 
 ##### CONFIGURE CodeDeploy #####
-wget https://aws-codedeploy-us-east-1.s3.us-east-
-1.amazonaws.com/latest/install
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 

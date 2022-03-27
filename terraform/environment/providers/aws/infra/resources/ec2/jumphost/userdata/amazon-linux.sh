@@ -31,6 +31,11 @@ sudo yum install -y \
 
 sudo amazon-linux-extras install docker
 
+sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) \
+    -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
 # install terraform
 wget -O terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
     https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip &&
@@ -80,8 +85,7 @@ sudo ln -snf $DOCKER_PATH /usr/bin/dock
 sudo ln -snf $DOCKER_COMPOSE_PATH /usr/bin/dcomp
 
 ##### CONFIGURE CodeDeploy #####
-wget https://aws-codedeploy-us-east-1.s3.us-east-
-1.amazonaws.com/latest/install
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 

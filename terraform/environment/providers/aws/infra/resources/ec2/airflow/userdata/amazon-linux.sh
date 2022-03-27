@@ -29,7 +29,16 @@ sudo yum install -y \
     python3 \
     python2.7
 
+# ================================================================================================
+#  INSTALL DOCKER (Amazon Linux)
+# ================================================================================================
 sudo amazon-linux-extras install docker
+
+# ================================================================================================
+#  INSTALL DOCKER-COMPOSE
+# ================================================================================================
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m) -o $DOCKER_COMPOSE_PATH
+sudo chmod +x /usr/bin/docker-compose
 
 # install terraform
 wget -O terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
@@ -80,8 +89,7 @@ sudo ln -snf $DOCKER_PATH /usr/bin/dock
 sudo ln -snf $DOCKER_COMPOSE_PATH /usr/bin/dcomp
 
 ##### CONFIGURE CodeDeploy #####
-wget https://aws-codedeploy-us-east-1.s3.us-east-
-1.amazonaws.com/latest/install
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 
