@@ -7,7 +7,7 @@
 ![download all](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/total.svg)
 ![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/1.2/total)
 ![view](https://views.whatilearened.today/views/github/devopscorner/iac-terraform-emr.svg)
-![clone](https://img.shields.io/badge/dynamic/json?color=success&label=clone&query=count&url=https://github.com/devopscorner/iac-terraform-emr/blob/main/clone.json?raw=True&logo=github)
+![clone](https://img.shields.io/badge/dynamic/json?color=success&label=clone&query=count&url=https://github.com/devopscorner/iac-terraform-emr/blob/master/clone.json?raw=True&logo=github)
 ![issues](https://img.shields.io/github/issues/devopscorner/iac-terraform-emr)
 ![pull requests](https://img.shields.io/github/issues-pr/devopscorner/iac-terraform-emr)
 ![forks](https://img.shields.io/github/forks/devopscorner/iac-terraform-emr)
