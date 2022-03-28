@@ -1,5 +1,19 @@
 # IaC Terraform EMR
 
+![all contributors](https://img.shields.io/github/contributors/devopscorner/iac-terraform-emr)
+![tags](https://img.shields.io/github/v/tag/devopscorner/iac-terraform-emr?sort=semver)
+[![docker pulls](https://img.shields.io/docker/pulls/devopscorner/cicd.svg)](https://hub.docker.com/r/devopscorner/cicd/)
+[![docker image size](https://img.shields.io/docker/image-size/devopscorner/cicd.svg?sort=date)](https://hub.docker.com/r/devopscorner/cicd/)
+![download all](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/total.svg)
+![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/1.2/total)
+![view](https://views.whatilearened.today/views/github/devopscorner/iac-terraform-emr.svg)
+![clone](https://img.shields.io/badge/dynamic/json?color=success&label=clone&query=count&url=https://github.com/devopscorner/iac-terraform-emr/blob/main/clone.json?raw=True&logo=github)
+![issues](https://img.shields.io/github/issues/devopscorner/iac-terraform-emr)
+![pull requests](https://img.shields.io/github/issues-pr/devopscorner/iac-terraform-emr)
+![forks](https://img.shields.io/github/forks/devopscorner/iac-terraform-emr)
+![stars](https://img.shields.io/github/stars/devopscorner/iac-terraform-emr)
+[![license](https://img.shields.io/github/license/devopscorner/iac-terraform-emr)](https://img.shields.io/github/license/devopscorner/iac-terraform-emr)
+
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
 ## Prerequirements
@@ -272,7 +286,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 - Bootstrap CI/CD Tools Inside IDE
 
   ```
-  git clone https://github.com/devopscorner/devopscorner-container.git
+  git clone https://github.com/devopscorner/iac-terraform-emr.git
   make sub-all
   make tf-core
   make tf-emr

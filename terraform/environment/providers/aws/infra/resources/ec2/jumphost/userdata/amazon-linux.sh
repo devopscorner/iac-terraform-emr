@@ -29,12 +29,16 @@ sudo yum install -y \
     python3 \
     python2.7
 
+# ================================================================================================
+#  INSTALL DOCKER (Amazon Linux)
+# ================================================================================================
 sudo amazon-linux-extras install docker
 
-sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) \
-    -o /usr/local/bin/docker-compose
-
-sudo chmod +x /usr/local/bin/docker-compose
+# ================================================================================================
+#  INSTALL DOCKER-COMPOSE
+# ================================================================================================
+sudo curl -L https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m) -o $DOCKER_COMPOSE_PATH
+sudo chmod +x /usr/bin/docker-compose
 
 # install terraform
 wget -O terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
