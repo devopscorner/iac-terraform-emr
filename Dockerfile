@@ -10,16 +10,16 @@ ARG GIT_URL
 
 ENV VENDOR="DevOpsCornerId"
 ENV AUTHOR="DevOpsCorner.id <support@devopscorner.id>"
-ENV IMG_NAME="ubuntu"
-ENV IMG_VERSION="20.04"
-ENV IMG_DESC="Docker Image Ubuntu 20.04"
+ENV IMG_NAME="alpine"
+ENV IMG_VERSION="3.15"
+ENV IMG_DESC="Docker Image Alpine 3.15"
 ENV IMG_ARCH="amd64/x86_64"
 
-ENV UBUNTU_VERSION="20.04"
+ENV ALPINE_VERSION="3.15"
 
 LABEL maintainer="$AUTHOR" \
       architecture="$IMG_ARCH" \
-      ubuntu-version="$UBUNTU_VERSION" \
+      ubuntu-version="$ALPINE_VERSION" \
       org.label-schema.build-date="$BUILD_DATE" \
       org.label-schema.name="$IMG_NAME" \
       org.label-schema.description="$IMG_DESC" \
