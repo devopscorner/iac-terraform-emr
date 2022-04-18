@@ -82,9 +82,9 @@ variable "ec2_private_a" {
   type        = map(string)
   description = "Private subnet for EC2 zone 1a"
   default = {
-    lab     = "16.0.8.0/24"
-    staging = "32.0.8.0/24"
-    prod    = "64.0.8.0/24"
+    lab     = "16.0.16.0/20"
+    staging = "32.0.16.0/20"
+    prod    = "64.0.16.0/20"
   }
 }
 
@@ -92,9 +92,9 @@ variable "ec2_private_b" {
   type        = map(string)
   description = "Private subnet for EC2 zone 1b"
   default = {
-    lab     = "16.0.12.0/24"
-    staging = "32.0.12.0/24"
-    prod    = "64.0.12.0/24"
+    lab     = "16.0.32.0/20"
+    staging = "32.0.32.0/20"
+    prod    = "64.0.32.0/20"
   }
 }
 
@@ -103,9 +103,9 @@ variable "ec2_public_a" {
   type        = map(string)
   description = "Public subnet for EC2 zone 1a"
   default = {
-    lab     = "16.0.16.0/24"
-    staging = "32.0.16.0/24"
-    prod    = "64.0.16.0/24"
+    lab     = "16.0.48.0/20"
+    staging = "32.0.48.0/20"
+    prod    = "64.0.48.0/20"
   }
 }
 
@@ -113,9 +113,9 @@ variable "ec2_public_b" {
   type        = map(string)
   description = "Public subnet for EC2 zone 1b"
   default = {
-    lab     = "16.0.20.0/24"
-    staging = "32.0.20.0/24"
-    prod    = "64.0.20.0/24"
+    lab     = "16.0.64.0/20"
+    staging = "32.0.64.0/20"
+    prod    = "64.0.64.0/20"
   }
 }
 
@@ -124,9 +124,9 @@ variable "eks_private_a" {
   type        = map(string)
   description = "Private subnet for EKS zone 1a"
   default = {
-    lab     = "16.0.48.0/24"
-    staging = "32.0.48.0/24"
-    prod    = "64.0.48.0/24"
+    lab     = "16.0.80.0/20"
+    staging = "32.0.80.0/20"
+    prod    = "64.0.80.0/20"
   }
 }
 
@@ -134,9 +134,9 @@ variable "eks_private_b" {
   type        = map(string)
   description = "Private subnet for EKS zone 1b"
   default = {
-    lab     = "16.0.64.0/24"
-    staging = "32.0.64.0/24"
-    prod    = "64.0.64.0/24"
+    lab     = "16.0.96.0/20"
+    staging = "32.0.96.0/20"
+    prod    = "64.0.96.0/20"
   }
 }
 
@@ -145,9 +145,9 @@ variable "eks_public_a" {
   type        = map(string)
   description = "Public subnet for EKS zone 1a"
   default = {
-    lab     = "16.0.72.0/24"
-    staging = "32.0.72.0/24"
-    prod    = "64.0.72.0/24"
+    lab     = "16.0.112.0/20"
+    staging = "32.0.112.0/20"
+    prod    = "64.0.112.0/20"
   }
 }
 
@@ -155,9 +155,9 @@ variable "eks_public_b" {
   type        = map(string)
   description = "Public subnet for EKS zone 1b"
   default = {
-    lab     = "16.0.96.0/24"
-    staging = "32.0.96.0/24"
-    prod    = "64.0.96.0/24"
+    lab     = "16.0.128.0/20"
+    staging = "32.0.128.0/20"
+    prod    = "64.0.128.0/20"
   }
 }
 
