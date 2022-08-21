@@ -1,4 +1,4 @@
-# Terraform EMR - v2.0.0
+# IaC Terraform EMR - v2.0.0
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
@@ -14,7 +14,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
 ---
 
-# Terraform EMR - v1.3
+# IaC Terraform EMR - v1.3
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
@@ -25,19 +25,18 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
 ---
 
-# Terraform EMR - v1.2
+# IaC Terraform EMR - v1.2
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
 ## Features
-
 
 - Update userdata installation
 - Added badges
 
 ---
 
-# Terraform EMR - v1.1
+# IaC Terraform EMR - v1.1
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
@@ -53,9 +52,11 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
 ---
 
-# Terraform EMR - v1.0
+# IaC Terraform EMR - v1.0
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
+## Features
 
 - Fixing pipeline for fully automate terraform approval
 - Separate buildspec for AWS CodeBuild integration with different stage of AWS CodePipeline
@@ -65,8 +66,10 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
 ---
 
-# Terraform EMR - v0.1
+# IaC Terraform EMR - v0.1
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
+## Features
 
 - Update infrastructure network mapping for subnet
