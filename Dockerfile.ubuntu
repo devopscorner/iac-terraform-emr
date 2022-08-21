@@ -1,7 +1,7 @@
 # -- ECR --
-FROM YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu
+# FROM YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu
 # -- DockerHub --
-# FROM devopscorner/cicd:ubuntu
+FROM devopscorner/cicd:ubuntu-nginx-1.23
 
 ARG BUILD_DATE
 ARG BUILD_VERSION
@@ -10,12 +10,12 @@ ARG GIT_URL
 
 ENV VENDOR="DevOpsCornerId"
 ENV AUTHOR="DevOpsCorner.id <support@devopscorner.id>"
-ENV IMG_NAME="ubuntu"
-ENV IMG_VERSION="20.04"
-ENV IMG_DESC="Docker Image Ubuntu 20.04"
+ENV IMG_NAME="terraform-emr-ubuntu"
+ENV IMG_VERSION="22.04"
+ENV IMG_DESC="Docker Image Terraform EMR Ubuntu 22.04"
 ENV IMG_ARCH="amd64/x86_64"
 
-ENV UBUNTU_VERSION="20.04"
+ENV UBUNTU_VERSION="22.04"
 
 LABEL maintainer="$AUTHOR" \
       architecture="$IMG_ARCH" \
