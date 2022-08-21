@@ -34,7 +34,7 @@ variable "access_my_ip" {
 variable "release_label" {
   description = "default release version number"
   type        = string
-  default     = "emr-6.2.1"
+  default     = "emr-6.7.0"
 }
 
 variable "applications" {
