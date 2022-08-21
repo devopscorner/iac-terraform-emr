@@ -1,3 +1,22 @@
+# IaC Terraform EMR - v2.1.0
+
+Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
+## Features
+
+- Added dockerhub container script for build, tag, push & pull
+- Added infracost GitHub action
+  - Core Infra
+  - Cloud9
+  - EC2 Airflow
+  - EC2 Jumphost
+  - EC2 PSQL
+  - EMR
+  - RDS EMRDB
+  - DynamoDB `tfstate`
+
+---
+
 # IaC Terraform EMR - v2.0.0
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
