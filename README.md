@@ -3,7 +3,7 @@
 ![all contributors](https://img.shields.io/github/contributors/devopscorner/iac-terraform-emr)
 ![tags](https://img.shields.io/github/v/tag/devopscorner/iac-terraform-emr?sort=semver)
 [![docker pulls](https://img.shields.io/docker/pulls/devopscorner/terraform-emr.svg)](https://hub.docker.com/r/devopscorner/terraform-emr/)
-[![docker image size](https://img.shields.io/docker/image-size/devopscorner/iac-terraform-emr.svg?sort=date)](https://hub.docker.com/r/devopscorner/terraform-emr/)
+[![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr.svg?sort=date)](https://hub.docker.com/r/devopscorner/terraform-emr/)
 ![download all](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/total.svg)
 ![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/2.1.0/total)
 ![view](https://views.whatilearened.today/views/github/devopscorner/iac-terraform-emr.svg)
