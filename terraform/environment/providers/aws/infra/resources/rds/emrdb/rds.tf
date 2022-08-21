@@ -22,6 +22,9 @@ locals {
 ##############################################################
 # Data sources to get VPC, subnets and security group details
 ##############################################################
+data "aws_vpc" "selected" {
+  id = data.terraform_remote_state.core_state.outputs.vpc_id
+}
 
 ## Create New KMS
 # resource "aws_kms_key" "devopscorner_cmk_sym" {

@@ -14,8 +14,8 @@ variable "aws_az" {
   description = "AWS Zone Target Deployment"
   default = {
     lab     = "ap-southeast-1a"
-    staging = "ap-southeast-1b"
-    prod    = "ap-southeast-1b"
+    staging = "ap-southeast-1a"
+    prod    = "ap-southeast-1a"
   }
 }
 
@@ -46,7 +46,7 @@ variable "dns_url" {
 variable "db_instance_class" {
   type = map(string)
   default = {
-    lab     = "db.t3.medium"
+    lab     = "db.t3.small"
     staging = "db.t3.medium"
     prod    = "db.t3.large"
   }
@@ -64,7 +64,11 @@ variable "retention_db" {
 variable "vpc_list" {
   type = list(string)
   ## VPC Lab, Staging, Prod
-  default = ["vpc-0b18c5d0af5d93286"]
+  default = {
+    lab     = "vpc-1234567890"
+    staging = "vpc-1234567890"
+    prod    = "vpc-0987654321"
+  }
 }
 
 variable "rds_name" {
