@@ -2,10 +2,10 @@
 
 ![all contributors](https://img.shields.io/github/contributors/devopscorner/iac-terraform-emr)
 ![tags](https://img.shields.io/github/v/tag/devopscorner/iac-terraform-emr?sort=semver)
-[![docker pulls](https://img.shields.io/docker/pulls/devopscorner/iac-terraform-emr.svg)](https://hub.docker.com/r/devopscorner/iac-terraform-emr/)
-[![docker image size](https://img.shields.io/docker/image-size/devopscorner/iac-terraform-emr.svg?sort=date)](https://hub.docker.com/r/devopscorner/iac-terraform-emr/)
+[![docker pulls](https://img.shields.io/docker/pulls/devopscorner/terraform-emr.svg)](https://hub.docker.com/r/devopscorner/terraform-emr/)
+[![docker image size](https://img.shields.io/docker/image-size/devopscorner/iac-terraform-emr.svg?sort=date)](https://hub.docker.com/r/devopscorner/terraform-emr/)
 ![download all](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/total.svg)
-![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/1.3/total)
+![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/2.0/total)
 ![view](https://views.whatilearened.today/views/github/devopscorner/iac-terraform-emr.svg)
 ![clone](https://img.shields.io/badge/dynamic/json?color=success&label=clone&query=count&url=https://github.com/devopscorner/iac-terraform-emr/blob/master/clone.json?raw=True&logo=github)
 ![issues](https://img.shields.io/github/issues/devopscorner/iac-terraform-emr)
@@ -26,89 +26,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 
 ## Build Container CI/CD
 
-- Clone Repository DevOpsCorner-CICD
-
-  ```
-  git clone https://github.com/devopscorner/devopscorner-container.git
-  ```
-
-- Replace "YOUR_AWS_ACCOUNT" with your AWS ACCOUNT ID
-
-  ```
-  find ./ -type f -exec sed -i 's/YOUR_AWS_ACCOUNT/123456789012/g' {} \;
-  ```
-
-- Build Container CI/CD (Ubuntu)
-
-  ```
-  cd compose/docker/cicd-ubuntu
-  docker build . -t devopscorner-cicd:ubuntu
-  -- or --
-  make build-cicd-ubuntu
-  ```
-
-- Build Container CI/CD (Alpine)
-
-  ```
-  cd compose/docker/cicd-alpine
-  docker build . -t devopscorner-cicd:alpine
-  -- or --
-  make build-cicd-alpine
-  ```
-
-- Add Your Container Image Path in ECR
-- Push Container CI/CD to ECR
-  - ECR Login
-
-    ```
-    aws ecr get-login-password --region [AWS_REGION] | docker login --username AWS --password-stdin [ECR_PATH]
-
-    ---
-
-    aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com
-    ```
-
-  - ECR Build
-
-    - Example:
-
-      ```
-      # Ubuntu
-
-      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:latest
-
-      # Alpine
-
-      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:latest
-      ```
-
-    - With Script:
-
-      ```
-      make ecr-tag-ubuntu ARGS=YOUR_AWS_ACCOUNT
-      make ecr-tag-alpine ARGS=YOUR_AWS_ACCOUNT
-      ```
-
-  - ECR Push
-
-    - Example:
-
-      ```
-      # Ubuntu
-
-      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:ubuntu
-
-      # Alpine
-
-      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:alpine
-      ```
-
-    - With Script:
-
-      ```
-      make ecr-push-ubuntu ARGS=YOUR_AWS_ACCOUNT
-      make ecr-push-alpine ARGS=YOUR_AWS_ACCOUNT
-      ```
+- Read full documentation, go to [this](https://github.com/devopscorner/devopscorner-container/blob/main/README.md) link.
 
 ## Terraform EMR
 
@@ -147,7 +65,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     ```
     cd core
     terraform init
-    terraform workspace select lab
+    terraform workspace select staging
     terraform plan
     terraform apply
     ```
@@ -158,7 +76,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     ```
     cd core
     terraform init
-    terraform workspace select lab
+    terraform workspace select staging
     terraform plan
     terraform apply
     ```
@@ -169,7 +87,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     ```
     cd emr
     terraform init
-    terraform workspace select lab
+    terraform workspace select staging
     terraform plan
     terraform apply
     ---
@@ -177,39 +95,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
     ```
 
 - Provisioning Other Infra Resources
-  - Goto `terraform/environment/providers/aws/infra/resources`
-    - Budget
-
-      ```
-      cd budget
-      ```
-
-    - RDS (database)
-
-      ```
-      cd rds
-      ```
-
-    - Cloud9
-
-      ```
-      cd cloud9
-      ```
-
-    - Amazon Managed Workflows for Apache Airflow (MWAA)
-
-      ```
-      cd mwaa
-      ```
-
-  - Running Terraform
-
-    ```
-    terraform init
-    terraform workspace select lab
-    terraform plan
-    terraform apply
-    ```
+  - Read provisioning other infra resources, go to [this](https://github.com/devopscorner/terraform-infra/blob/master/docs/README.md) link.
 
 ## Terraform EMR Inside Container
 
@@ -226,7 +112,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   - With Script:
 
       ```
-      make ecr-build-alpine ARGS=YOUR_AWS_ACCOUNT
+      make build-tf-emr ARGS=YOUR_AWS_ACCOUNT CI_PATH=devopscorner/terraform-emr
       ```
 
 
@@ -237,13 +123,13 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
       ```
       # Alpine
 
-      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/cicd:latest
+      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:latest
       ```
 
   - With Script:
 
       ```
-      make ecr-tag-alpine ARGS=YOUR_AWS_ACCOUNT
+      make tag-tf-emr ARGS=YOUR_AWS_ACCOUNT CI_PATH=devopscorner/terraform-emr
       ```
 
 - ECR Push
@@ -263,7 +149,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   - With Script:
 
       ```
-      make ecr-push-alpine ARGS=YOUR_AWS_ACCOUNT
+      make push-tf-emr ARGS=YOUR_AWS_ACCOUNT CI_PATH=devopscorner/terraform-emr
       ```
 
 ## Using Cloud9 IDE
@@ -278,18 +164,9 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
   Go to `terraform/environment/providers/aws/infra/resources/cloud9` folder
 
   terraform init
-  terraform workspace select lab
+  terraform workspace select staging
   terraform plan
   terraform apply
-  ```
-
-- Bootstrap CI/CD Tools Inside IDE
-
-  ```
-  git clone https://github.com/devopscorner/iac-terraform-emr.git
-  make sub-all
-  make tf-core
-  make tf-emr
   ```
 
 ## Cleanup
