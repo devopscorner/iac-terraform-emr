@@ -1,3 +1,14 @@
+# IaC Terraform EMR - v2.2.0
+
+Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
+## Features
+
+- All features from version 2.1.0
+- Update EMR version from 6.2.1 to 6.7.0
+
+---
+
 # IaC Terraform EMR - v2.1.0
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
