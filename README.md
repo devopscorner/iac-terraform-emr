@@ -3,7 +3,6 @@
 ![all contributors](https://img.shields.io/github/contributors/devopscorner/iac-terraform-emr)
 ![tags](https://img.shields.io/github/v/tag/devopscorner/iac-terraform-emr?sort=semver)
 [![docker pulls](https://img.shields.io/docker/pulls/devopscorner/terraform-emr.svg)](https://hub.docker.com/r/devopscorner/terraform-emr/)
-[![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr.svg?sort=date)](https://hub.docker.com/r/devopscorner/terraform-emr/)
 ![download all](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/total.svg)
 ![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/2.1.0/total)
 ![view](https://views.whatilearened.today/views/github/devopscorner/iac-terraform-emr.svg)
@@ -15,6 +14,35 @@
 [![license](https://img.shields.io/github/license/devopscorner/iac-terraform-emr)](https://img.shields.io/github/license/devopscorner/iac-terraform-emr)
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
+## Available Tags
+
+### Alpine
+
+| Image name | Size |
+|------------|------|
+| `devopscorner/terraform-emr:alpine` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/alpine.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=alpine) |
+| `devopscorner/terraform-emr:alpine-latest` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/alpine-latest.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=alpine-latest) |
+| `devopscorner/terraform-emr:alpine-3.16` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/alpine-3.16.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=alpine-3.16) |
+
+### Ubuntu
+
+| Image name | Size |
+|------------|------|
+| `devopscorner/terraform-emr:ubuntu` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/ubuntu.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=ubuntu) |
+| `devopscorner/terraform-emr:ubuntu-latest` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/ubuntu-latest.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=ubuntu-latest) |
+| `devopscorner/terraform-emr:ubuntu-22.04` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/ubuntu-22.04.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=ubuntu-22.04) |
+  
+### AWS Linux (CodeBuild)
+
+| Image name | Size |
+|------------|------|
+| `devopscorner/terraform-emr:latest`           | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/latest.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=latest) |
+| `devopscorner/terraform-emr:codebuild`        | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild) |
+| `devopscorner/terraform-emr:codebuild-latest` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-latest.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-latest) |
+| `devopscorner/terraform-emr:codebuild-2.0`    | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-2.0.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-2.0) |
+| `devopscorner/terraform-emr:codebuild-3.0`    | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-3.0.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-3.0) |
+| `devopscorner/terraform-emr:codebuild-4.0`    | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-4.0.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-4.0) |
 
 ## Prerequirements
 
