@@ -15,6 +15,8 @@
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
+---
+ Updated upstream
 ## Available Tags
 
 ### Alpine
@@ -32,7 +34,7 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 | `devopscorner/terraform-emr:ubuntu` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/ubuntu.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=ubuntu) |
 | `devopscorner/terraform-emr:ubuntu-latest` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/ubuntu-latest.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=ubuntu-latest) |
 | `devopscorner/terraform-emr:ubuntu-22.04` | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/ubuntu-22.04.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=ubuntu-22.04) |
-  
+
 ### AWS Linux (CodeBuild)
 
 | Image name | Size |
@@ -43,6 +45,8 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 | `devopscorner/terraform-emr:codebuild-2.0`    | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-2.0.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-2.0) |
 | `devopscorner/terraform-emr:codebuild-3.0`    | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-3.0.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-3.0) |
 | `devopscorner/terraform-emr:codebuild-4.0`    | [![docker image size](https://img.shields.io/docker/image-size/devopscorner/terraform-emr/codebuild-4.0.svg?label=Image%20size&logo=docker)](https://hub.docker.com/repository/docker/devopscorner/terraform-emr/tags?page=1&ordering=last_updated&name=codebuild-4.0) |
+
+---
 
 ## Prerequirements
 
