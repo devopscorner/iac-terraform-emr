@@ -16,7 +16,6 @@
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
 
 ---
- Updated upstream
 ## Available Tags
 
 ### Alpine
