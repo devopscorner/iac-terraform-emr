@@ -47,9 +47,9 @@ docker_tag() {
 }
 
 main() {
-  # set_tag alpine 3.16 devopscorner/terraform-infra
-  # set_tag ubuntu 22.04 devopscorner/terraform-infra
-  # set_tag codebuild 4.0 devopscorner/terraform-infra
+  # set_tag alpine 3.16 devopscorner/terraform-emr
+  # set_tag ubuntu 22.04 devopscorner/terraform-emr
+  # set_tag codebuild 4.0 devopscorner/terraform-emr
   set_tag $1 $2 $3
   docker_tag
   echo ''

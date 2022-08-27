@@ -36,9 +36,9 @@ docker_push() {
 
 main() {
   login_docker
-  # docker_push alpine devopscorner/terraform-infra
-  # docker_push ubuntu devopscorner/terraform-infra
-  # docker_push codebuild devopscorner/terraform-infra
+  # docker_push alpine devopscorner/terraform-emr
+  # docker_push ubuntu devopscorner/terraform-emr
+  # docker_push codebuild devopscorner/terraform-emr
   docker_push $1 $2
   echo ''
   echo '-- ALL DONE --'

@@ -27,7 +27,7 @@ export CI_PROJECT_NAME ?= terraform-emr
 
 IMAGE   = $(CI_REGISTRY)/${CI_PROJECT_PATH}/${CI_PROJECT_NAME}
 DIR     = $(shell pwd)
-VERSION ?= 1.3.0
+VERSION ?= 1.5.0
 
 export BASE_IMAGE=alpine
 export BASE_VERSION=3.16
