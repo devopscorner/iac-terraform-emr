@@ -1,5 +1,5 @@
 # ==========================================================================
-#  Resources: RDS / rds-vars.tf (Spesific Environment)
+#  Resources: RDS emrdb / rds-vars.tf (Spesific Environment)
 # --------------------------------------------------------------------------
 #  Description
 # --------------------------------------------------------------------------
@@ -74,7 +74,7 @@ variable "vpc_list" {
 variable "rds_name" {
   type        = string
   description = "RDS Name"
-  default     = "EMRDB-PSQL"
+  default     = "GOAPPDB-PSQL"
 }
 
 variable "rds_storage_size" {

@@ -69,7 +69,7 @@ variable "cloud9_instance_type" {
 # EC2 will fetch and run script on this url after boot
 variable "cloud9_user_data_url" {
   type    = string
-  default = "https://raw.githubusercontent.com/devopscorner/iac-terraform-emr/main/terraform/environment/providers/aws/infra/resources/cloud9/userdata/user-data.sh"
+  default = "https://raw.githubusercontent.com/devopscorner/terraform-infra/main/terraform/environment/providers/aws/infra/resources/cloud9/userdata/user-data.sh"
 }
 
 # Used in Security Group for accessing EC2
