@@ -1,3 +1,47 @@
+# IaC Terraform EMR - v2.3.0
+
+Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
+## Features
+
+- All features from version 2.2.0
+- Added Documentation for CI/CD Pipeline with
+  - Implementation Security Static Code Analysis for Terraform Plan
+    - Tenable [`terrascan`](https://github.com/tenable/terrascan)
+    - Terraform Plan Scanning with [`checkov`](https://github.com/bridgecrewio/checkov)
+    - Terraform Version Manager with [`tfenv`](https://github.com/tfutils/tfenv)
+    - Cloud Cost Estimate with [`infracost`](https://www.infracost.io/)
+  - Implementation Infra Costing
+
+- Sample Implementation
+  ```
+  # ========================= #
+  #  Terraform Plan (Review)  #
+  # ========================= #
+  - terraform init
+  - terraform workspace select ${WORKSPACE_ENV} || terraform workspace new ${WORKSPACE_ENV}
+  - terraform plan --out tfplan.binary
+  - terraform show -json tfplan.binary > tfplan.json
+
+  # ================== #
+  #  Terraform Addons  #
+  # ================== #
+  # ~ Terrascan ~
+  - terrascan init
+  - terrascan scan -o human
+
+  # ~ Tfsec ~
+  - tfsec .
+
+  # ~ Checkov ~
+  - checkov -f tfplan.json
+
+  # ~ Infracost ~
+  - infracost breakdown --path tfplan.json
+  ```
+
+---
+
 # IaC Terraform EMR - v2.2.0
 
 Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools

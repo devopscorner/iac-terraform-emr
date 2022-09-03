@@ -1,10 +1,12 @@
 # IaC Terraform EMR
 
+Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
+
 ![all contributors](https://img.shields.io/github/contributors/devopscorner/iac-terraform-emr)
 ![tags](https://img.shields.io/github/v/tag/devopscorner/iac-terraform-emr?sort=semver)
 [![docker pulls](https://img.shields.io/docker/pulls/devopscorner/terraform-emr.svg)](https://hub.docker.com/r/devopscorner/terraform-emr/)
 ![download all](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/total.svg)
-![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/2.1.0/total)
+![download latest](https://img.shields.io/github/downloads/devopscorner/iac-terraform-emr/2.3.0/total)
 ![view](https://views.whatilearened.today/views/github/devopscorner/iac-terraform-emr.svg)
 ![clone](https://img.shields.io/badge/dynamic/json?color=success&label=clone&query=count&url=https://github.com/devopscorner/iac-terraform-emr/blob/master/clone.json?raw=True&logo=github)
 ![issues](https://img.shields.io/github/issues/devopscorner/iac-terraform-emr)
@@ -13,9 +15,8 @@
 ![stars](https://img.shields.io/github/stars/devopscorner/iac-terraform-emr)
 [![license](https://img.shields.io/github/license/devopscorner/iac-terraform-emr)](https://img.shields.io/github/license/devopscorner/iac-terraform-emr)
 
-Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) tools
-
 ---
+
 ## Available Tags
 
 ### Alpine
@@ -55,133 +56,11 @@ Provisioning Amazon EMR cluster using Terraform as Infrastructure-as-Code (IaC) 
 - Terraform Cli (`terraform`)
 - Terraform Environment (`tfenv`)
 
-## Build Container CI/CD
+## Documentation
 
-- Read full documentation, go to [this](https://github.com/devopscorner/devopscorner-container/blob/main/README.md) link.
-
-## Terraform EMR
-
-- Clone this repository
-
-  ```
-  git clone https://github.com/devopscorner/iac-terraform-emr.git
-  ```
-
-- Get Terraform Modules
-  - Officials
-
-    ```
-    ./get-officials.sh
-    -- or --
-    make sub-officials
-    ```
-
-  - Community
-
-    ```
-    ./get-community.sh
-    -- or --
-    make sub-community
-    ```
-
-  - Get All Modules (Officials & Community)
-
-    ```
-    make sub-all
-    ```
-
-- Provisioning your Infra (non existing infrastructure)
-  - Goto `terraform/environment/providers/aws/infra`
-
-    ```
-    cd core
-    terraform init
-    terraform workspace select staging
-    terraform plan
-    terraform apply
-    ```
-
-- Provisioning your Terraform State (Remote State)
-  - Goto `terraform/environment/providers/aws/tfstate`
-
-    ```
-    cd core
-    terraform init
-    terraform workspace select staging
-    terraform plan
-    terraform apply
-    ```
-
-- Provisioning Amazon EMR (existing infrastructure)
-  - Goto `terraform/environment/providers/aws/infra/resources`
-
-    ```
-    cd emr
-    terraform init
-    terraform workspace select staging
-    terraform plan
-    terraform apply
-    ---
-    notes: you need to define your existing infra in variables.tf
-    ```
-
-- Provisioning Other Infra Resources
-  - Read provisioning other infra resources, go to [this](https://github.com/devopscorner/terraform-infra/blob/master/docs/README.md) link.
-
-## Terraform EMR Inside Container
-
-- ECR Build
-
-  - Example:
-
-      ```
-      # Alpine
-
-      docker build . -t YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine
-      ```
-
-  - With Script:
-
-      ```
-      make build-tf-emr ARGS=YOUR_AWS_ACCOUNT CI_PATH=devopscorner/terraform-emr
-      ```
-
-
-- ECR Tag
-
-  - Example:
-
-      ```
-      # Alpine
-
-      docker tag YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:latest
-      ```
-
-  - With Script:
-
-      ```
-      make tag-tf-emr ARGS=YOUR_AWS_ACCOUNT CI_PATH=devopscorner/terraform-emr
-      ```
-
-- ECR Push
-
-  - Example:
-
-      ```
-      # Alpine
-
-      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:alpine
-
-      # Latest (Alpine)
-
-      docker push YOUR_AWS_ACCOUNT.dkr.ecr.ap-southeast-1.amazonaws.com/devopscorner/terraform-emr:latest
-      ```
-
-  - With Script:
-
-      ```
-      make push-tf-emr ARGS=YOUR_AWS_ACCOUNT CI_PATH=devopscorner/terraform-emr
-      ```
+- Index Documentation, go to [this](docs/README.md) link
+- Reproduce DEMO, detail [here](docs/DEMO.md)
+- EMR DEMO Script, listed in `test` folder
 
 ## Using Cloud9 IDE
 

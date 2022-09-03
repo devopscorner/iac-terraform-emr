@@ -316,5 +316,5 @@ tf-emr-cmd:
 	@echo " Task      : Terraform Command $(ARGS)"
 	@echo " Date/Time : `date` "
 	@echo "============================================================"
-	@cd $(PATH_INFRA) && terraform $(ARGS)
+	@cd $(INFRA_RESOURCES) && terraform $(ARGS)
 	@echo '- DONE -'
