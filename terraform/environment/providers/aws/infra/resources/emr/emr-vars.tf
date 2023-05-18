@@ -25,7 +25,7 @@ variable "aws_az" {
 variable "access_my_ip" {
   type        = string
   description = "Your IP Address"
-  default     = "118.136.0.0/16"
+  default     = "118.136.0.0/22"
 }
 
 # ========================================
@@ -34,7 +34,7 @@ variable "access_my_ip" {
 variable "release_label" {
   description = "default release version number"
   type        = string
-  default     = "emr-6.7.0"
+  default     = "emr-6.2.1"
 }
 
 variable "applications" {
